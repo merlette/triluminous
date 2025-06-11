@@ -14,6 +14,7 @@ let pages = [
 	{
 		title: "Home",
 		url: "/",
+		isExternal: false
 	},
 	// {
 	// 	title: "Services",
@@ -22,10 +23,12 @@ let pages = [
 	{
 		title: "Blog",
 		url: "/blog/",
+		isExternal: false
 	},
 	{
 		title: t("contacts"),
-		url: "/contact/",
+		url: "https://qm.qq.com/q/8ShudcdYt2",
+		isExternal: true
 	},
 ];
 
@@ -193,31 +196,30 @@ const { pathname } = Astro.url;
 							class="flex list-none flex-col items-end justify-center gap-2 px-2 text-center text-3xl md:flex-row md:items-center md:text-base">
 							{
 								pages.map((page) => (
-									<li data-cursor-hover>
-										<a
-											href={translatePath(page.url)}
-											class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
-												page.url === pathname ||
-												page.url === pathname.replace(/^\/it|\/$/, "") ||
-												(page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/it/blog")))
-													? "active"
-													: ""
-											}`}>
-											<span class="menu-item-container inline-block">
-												<span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
-													{page.title}
-												</span>
-											</span>
-										</a>
-									</li>
-								))
+									<li data-cursor-hover><a
+      									href={page.isExternal ? page.url : translatePath(page.url)}
+      									class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
+        									page.url === pathname ||
+        									page.url === pathname.replace(/^\/en|\/$/, "") ||
+        									(page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/en/blog")))
+          									? "active"
+          									: ""
+      									}`}>
+      									<span class="menu-item-container inline-block">
+        									<span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
+          										{page.title}
+       										</span>
+      									</span>
+    								</a>
+  								</li>
+							))
 							}
 							<li>
-								<a href={translatePath(path, `${lang === "it" ? "en" : "it"}`)} class="inline-block cursor-pointer px-1 py-[0.33rem]">
+								<a href={translatePath(path, `${lang === "en" ? "cn" : "en"}`)} class="inline-block cursor-pointer px-1 py-[0.33rem]">
 									<span class="menu-item-container inline-block">
 										<span
 											class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
-											{lang === "it" ? "en" : "it"}
+											{lang === "en" ? "cn" : "en"}
 										</span>
 									</span>
 								</a>
@@ -330,9 +332,9 @@ const { pathname } = Astro.url;
 					x: () => {
 						const pathName = window.location.pathname;
 
-						if (pathName === "/" || pathName === "/it/") {
+						if (pathName === "/" || pathName === "/en/") {
 							return "9.5rem";
-						} else if (pathName.startsWith("/blog") || pathName.startsWith("/it/blog")) {
+						} else if (pathName.startsWith("/blog") || pathName.startsWith("/en/blog")) {
 							return "3.5rem";
 						}
 

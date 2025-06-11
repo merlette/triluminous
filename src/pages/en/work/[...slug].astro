@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 			const [lang, ...slug] = entry.slug.split("/");
 			return { params: { lang, slug: slug.join("/") || undefined }, props: entry };
 		})
-		.filter((entry) => entry.params.lang === "en");
+		.filter((entry) => entry.params.lang === "cn");
 }
 
 const entry = Astro.props;
@@ -20,7 +20,7 @@ const { Content } = await entry.render();
 const seo: AstroSeoProps = {
 	title: `Project ${entry.data.title} - Majestico`,
 	description: entry.data.description,
-	canonical: `https://mintaka.co/it/work/${entry.slug}/`,
+	canonical: `https://mintaka.co/en/work/${entry.slug}/`,
 	openGraph: {
 		url: entry.slug,
 		title: entry.data.title,

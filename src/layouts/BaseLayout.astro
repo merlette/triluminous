@@ -22,13 +22,13 @@ const shareImage = new URL("/images/meta/mintaka_share.gif", Astro.site).toStrin
 const defaultSeo: AstroSeoProps = {
 	title: "三明社",
 	description:
-		"Mintaka Studio excels in creating fast, user-friendly websites with a focus on aesthetic design and SEO optimization, ensuring a standout online presence",
+		"我是描述",
 	canonical: "https://mintaka.co",
 	openGraph: {
 		url: "https://mintaka.co",
 		title: "三明社",
 		description:
-			"Mintaka Studio excels in creating fast, user-friendly websites with a focus on aesthetic design and SEO optimization, ensuring a standout online presence",
+			"我是描述",
 		images: [
 			{
 				url: shareImage,
@@ -66,7 +66,7 @@ const seo = {
 };
 
 function cursorFollowerActive() {
-	const paths = ["", "/", "/it/", "/it"];
+	const paths = ["", "/", "/en/", "/en"];
 	return paths.includes(pathname);
 }
 ---
