@@ -4,9 +4,9 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "description": "Web Agency Leading in Performant Web Design Solutions - Mintaka Studio",
-    "name": "三明社",
-    "short_name": "三明社",
+    "description": "Triluminous Academy - 三明学社",
+    "name": "三明学社",
+    "short_name": "三明学社",
     "icons": [
         {
             "src": "/pwa-64x64.png",

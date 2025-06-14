@@ -20,15 +20,15 @@ const lang = getLangFromUrl(Astro.url);
 const shareImage = new URL("/images/meta/mintaka_share.gif", Astro.site).toString();
 
 const defaultSeo: AstroSeoProps = {
-	title: "三明社",
+	title: "三明学社",
 	description:
-		"我是描述",
-	canonical: "https://mintaka.co",
+		"Triluminous Academy",
+	canonical: "https://triluminous.pages.dev/",
 	openGraph: {
-		url: "https://mintaka.co",
-		title: "三明社",
+		url: "https://triluminous.pages.dev/",
+		title: "三明学社",
 		description:
-			"我是描述",
+			"Triluminous Academy",
 		images: [
 			{
 				url: shareImage,
@@ -45,17 +45,17 @@ const defaultSeo: AstroSeoProps = {
 				type: "image/gif",
 			},
 		],
-		site_name: "Mintaka",
+		site_name: "Triluminous Academy",
 	},
 	twitter: {
-		handle: "@mintakastudio",
-		site: "@mintakastudio",
+		handle: "@triluminousacademy",
+		site: "@triluminousacademy",
 		cardType: "summary_large_image",
 	},
 	additionalMetaTags: [
 		{
 			name: "publisher",
-			content: "Mintaka Studio",
+			content: "Triluminous Academy",
 		},
 	],
 };
