@@ -9,13 +9,13 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const allPosts = (await getCollection("posts"))
-	.filter((post) => {
-		const [postLang, ...slug] = post.slug.split("/");
-		return postLang === lang;
-	})
+  .filter((post) => {
+    const [postLang, ...slug] = post.slug.split("/");
+    return postLang === lang;  // 确保只显示当前语言的文章
+  })
 	.map((post) => {
-		const [postLang, slug] = post.slug.split("/");
-
+		const [postLang, ...slugParts] = post.slug.split("/");
+		const slug = slugParts.join("/");
 		return {
 			...post,
 			slug: slug,
@@ -39,7 +39,7 @@ const allPosts = (await getCollection("posts"))
 		{
 			allPosts && allPosts[0] && (
 				<Entry
-					url={"/blog/" + allPosts[0].slug}
+					url={translatePath("/blog/" + allPosts[0].slug)}
 					title={allPosts[0].data.title}
 					description={allPosts[0].data.description}
 					alt={allPosts[0].data.title}
@@ -57,7 +57,7 @@ const allPosts = (await getCollection("posts"))
 					.slice(1)
 					.map((post) => (
 						<Entry
-							url={"/blog/" + post.slug}
+							url={translatePath("/blog/" + post.slug)}  // 使用translatePath函数
 							title={post.data.title}
 							description={post.data.description}
 							alt={post.data.title}

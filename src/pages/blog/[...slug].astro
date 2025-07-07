@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 			const [lang, ...slug] = entry.slug.split("/");
 			return { params: { lang, slug: slug.join("/") || undefined }, props: entry };
 		})
-		.filter((entry) => entry.params.lang === "en");
+		.filter((entry) => entry.params.lang === "cn");
 }
 
 const entry = Astro.props;
