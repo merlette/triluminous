@@ -24,6 +24,15 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTranslatedPath(lang: keyof typeof ui) {
 	return function translatePath(path: string, l: string = lang) {
-		return !showDefaultLang && l === defaultLang ? path : `/${l}${path}`;
+		// 如果路径已经包含语言前缀，则不再添加
+		if (path.startsWith(`/${l}/`)) {
+			return path;
+		}
+		// 对于中文（默认语言），不添加语言前缀
+		if (l === defaultLang) {
+			return path;
+		}
+		// 对于其他语言，添加语言前缀
+		return `/${l}${path}`;
 	};
 }

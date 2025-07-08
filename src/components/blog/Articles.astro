@@ -39,7 +39,7 @@ const allPosts = (await getCollection("posts"))
 		{
 			allPosts && allPosts[0] && (
 				<Entry
-					url={translatePath("/blog/" + allPosts[0].slug)}
+					url={lang === "cn" ? "/blog/" + allPosts[0].slug : "/" + lang + "/blog/" + allPosts[0].slug}
 					title={allPosts[0].data.title}
 					description={allPosts[0].data.description}
 					alt={allPosts[0].data.title}
@@ -57,7 +57,7 @@ const allPosts = (await getCollection("posts"))
 					.slice(1)
 					.map((post) => (
 						<Entry
-							url={translatePath("/blog/" + post.slug)}  // 使用translatePath函数
+							url={lang === "cn" ? "/blog/" + post.slug : "/" + lang + "/blog/" + post.slug}
 							title={post.data.title}
 							description={post.data.description}
 							alt={post.data.title}

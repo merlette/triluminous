@@ -9,7 +9,7 @@ const translatePath = useTranslatedPath(lang);
 const { title, url, author, pubDate, description, image, titleInside = false } = Astro.props;
 ---
 
-<a href={translatePath(url)} title={title} class="group">
+<a href={url} title={title} class="group">
 	<article class="relative flex h-full flex-1 flex-col overflow-hidden rounded-lg">
 		<div
 			class:list={[

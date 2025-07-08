@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import type { AstroSeoProps } from "@astrolib/seo";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+export async function getStaticPaths() {
+	const authorEntries = await getCollection("authors");
+	return authorEntries.map((entry) => {
+		const [lang, ...slugParts] = entry.slug.split("/");
+		const slug = slugParts.join("/");
+		return {
+			params: { slug: `${lang}/${slug}` },
+			props: entry,
+		};
+	});
+}
+
+const entry = Astro.props;
+const { Content } = await entry.render();
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const seo: AstroSeoProps = {
+	title: `${entry.data.name} - Triluminous Academy Author`,
+	description: entry.data.description,
+	canonical: `https://triluminous.pages.dev/author/${entry.slug}/`,
+	openGraph: {
+		url: `https://triluminous.pages.dev/author/${entry.slug}`,
+		title: `${entry.data.name} - Triluminous Academy Author`,
+		description: entry.data.description,
+		images: [
+			{
+				url: entry.data.image.source.src,
+				width: 1200,
+				height: 630,
+				alt: entry.data.name,
+				type: "image/jpeg",
+			},
+		],
+		site_name: "Triluminous Academy",
+	},
+};
+---
+
+<BaseLayout seo={seo}>
+	<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+		<div class="flex flex-col items-center space-y-8">
+			<img
+				src={entry.data.image.source.src}
+				alt={entry.data.image.alt}
+				class="h-32 w-32 rounded-full object-cover"
+			/>
+			<div class="text-center">
+				<h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{entry.data.name}</h1>
+				<p class="mt-4 text-lg leading-8 text-gray-600">{entry.data.description}</p>
+			</div>
+		</div>
+		<div class="prose prose-lg mx-auto mt-12">
+			<Content />
+		</div>
+	</div>
+</BaseLayout>

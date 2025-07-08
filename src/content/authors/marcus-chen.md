@@ -1,6 +1,6 @@
 ---
-name: Cody Xie
-description: "三明社第三届社长"
+name: Marcus Chen
+description: "Award-winning Visual Effects Supervisor and 3D Artist specializing in immersive digital experiences and virtual production"
 image:
   source: "@assets/images/authors/mintaka.png"
   alt: "Portrait of Marcus Chen"
