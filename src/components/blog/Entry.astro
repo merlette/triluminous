@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-const { title, url, author, pubDate, description, image, titleInside = false } = Astro.props;
+const { title, url, pubDate, description, image, titleInside = false } = Astro.props;
 ---
 
 <a href={url} title={title} class="group">
@@ -34,10 +34,6 @@ const { title, url, author, pubDate, description, image, titleInside = false } =
 			</div>
 			<footer>
 				<div class="mt-6 inline-flex items-center space-x-1">
-					<p class={`text-xs font-medium ${titleInside ? "text-slate-200" : "text-slate-900"}`}>
-						{author.name}
-					</p>
-					<span aria-hidden="true">&middot;</span>
 					<div class={`flex text-xs ${titleInside ? "text-slate-300" : "text-slate-500"}`}>
 						<time datetime="2020-03-16">{pubDate}</time>
 					</div>

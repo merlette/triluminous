@@ -38,9 +38,7 @@ const readingTime = getArticleReadingTime(body);
 			<div class="flex flex-col gap-6 pt-20">
 				<Title
 					title={frontmatter.title}
-					subtitle={`Written by: <a href="${frontmatter.author.link}" rel="author">${frontmatter.author.name}</a> on ${frontmatter.pubDate
-						.toString()
-						.slice(0, 10)}`}
+					subtitle={`Published on ${frontmatter.pubDate.toString().slice(0, 10)}`}
 				/>
 
 				<p class="max-w-2xl text-base text-slate-500">
