@@ -17,10 +17,12 @@ const { tag, posts } = Astro.props as Props;
 		<div class="py-10">
 			<Title title={tag} subtitle="tag" class="pb-10 pt-20 uppercase" />
 		</div>
-		<ul class="mt-12 grid grid-cols-1 gap-x-3 gap-y-24 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 lg:gap-x-6">
-			{
-				posts.map((post: CollectionEntry<"posts">, idx) => (
-					<li key={post.slug ?? idx}>
+		{posts.length === 0 ? (
+			<div class="text-center text-gray-400 py-12">暂无相关文章</div>
+		) : (
+			<ul class="mt-12 grid grid-cols-1 gap-x-3 gap-y-24 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 lg:gap-x-6" aria-label="文章列表">
+				{posts.map((post: CollectionEntry<"posts">, idx) => (
+					<li class="" aria-label={post.data.title}>
 						<EntriesOne
 							url={"/blog/" + post.slug}
 							title={post.data.title}
@@ -30,8 +32,8 @@ const { tag, posts } = Astro.props as Props;
 							image={post.data.image.source}
 						/>
 					</li>
-				))
-			}
-		</ul>
+				))}
+			</ul>
+		)}
 	</div>
 </section>
