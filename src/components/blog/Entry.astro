@@ -7,6 +7,16 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const { title, url, pubDate, description, image, titleInside = false } = Astro.props;
+
+// 日期格式化
+function formatDate(date: string | Date, lang: string): string {
+	const d = new Date(date);
+	if (lang === "cn") {
+		return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+	} else {
+		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+	}
+}
 ---
 
 <a href={url} title={title} class="group">
@@ -35,7 +45,7 @@ const { title, url, pubDate, description, image, titleInside = false } = Astro.p
 			<footer>
 				<div class="mt-6 inline-flex items-center space-x-1">
 					<div class={`flex text-xs ${titleInside ? "text-slate-300" : "text-slate-500"}`}>
-						<time datetime="2020-03-16">{pubDate}</time>
+						<time datetime={formatDate(pubDate, lang)}>{formatDate(pubDate, lang)}</time>
 					</div>
 				</div>
 			</footer>

@@ -30,6 +30,15 @@ function getArticleReadingTime(body: string): number {
 }
 
 const readingTime = getArticleReadingTime(body);
+
+function formatDate(date: string | Date, lang: string): string {
+	const d = new Date(date);
+	if (lang === "cn") {
+		return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+	} else {
+		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+	}
+}
 ---
 
 <BaseLayout seo={seo}>
@@ -38,7 +47,9 @@ const readingTime = getArticleReadingTime(body);
 			<div class="flex flex-col gap-6 pt-20">
 				<Title
 					title={frontmatter.title}
-					subtitle={`Published on ${frontmatter.pubDate.toString().slice(0, 10)}`}
+					subtitle={lang === "cn"
+						? `发表于 ${formatDate(frontmatter.pubDate, lang)}`
+						: `Published on ${formatDate(frontmatter.pubDate, lang)}`}
 				/>
 
 				<p class="max-w-2xl text-base text-slate-500">

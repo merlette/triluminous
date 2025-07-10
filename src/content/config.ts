@@ -6,6 +6,7 @@ const postsCollection = defineCollection({
 			title: z.string(),
 			pubDate: z.date(),
 			description: z.string(),
+			order: z.number().optional(),
 			image: z.object({
 				source: image(),
 				alt: z.string(),
@@ -21,6 +22,7 @@ const projectsCollection = defineCollection({
 			pubDate: z.date(),
 			description: z.string(),
 			link: z.string(),
+			order: z.number().optional(),
 			image: z.object({
 				source: image(),
 				alt: z.string(),

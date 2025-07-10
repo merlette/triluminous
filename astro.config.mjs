@@ -3,6 +3,9 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import 'katex/dist/katex.min.css';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +26,8 @@ export default defineConfig({
 		shikiConfig: {
 			theme: "css-variables",
 		},
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeKatex],
 	},
 	shikiConfig: {
 		wrap: true,

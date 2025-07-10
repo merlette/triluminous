@@ -24,7 +24,12 @@ const allProjects = (await getCollection("projects"))
 			slug: slug,
 		};
 	})
-	.sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate));
+	.sort((a, b) => {
+		// 优先使用order字段，如果order为0或不存在则使用pubDate
+		const orderA = a.data.order === 0 || a.data.order === undefined ? a.data.pubDate.getTime() : a.data.order;
+		const orderB = b.data.order === 0 || b.data.order === undefined ? b.data.pubDate.getTime() : b.data.order;
+		return orderA - orderB;
+	});
 ---
 
 <section id="projects" class:list={["section work-preview-section home-dark-section py-12", className]}>
