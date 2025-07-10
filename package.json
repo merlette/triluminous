@@ -28,6 +28,7 @@
 		"@astrojs/tailwind": "6.0.0",
 		"@cloudflare/pages-plugin-mailchannels": "0.1.5",
 		"astro": "5.3.0",
+		"astro-analytics": "^2.7.0",
 		"gsap": "^3.13.0",
 		"katex": "^0.16.22",
 		"rehype-katex": "^7.0.1",
