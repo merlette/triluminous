@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import Cta from "@/components/blog/Cta.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 import Comments from "@components/blog/Comments.astro";
 import Title from "@components/global/Title.astro";
@@ -87,5 +86,4 @@ function formatDate(date: string | Date, lang: string): string {
 			<Comments />
 		</div>
 	</section>
-	<Cta />
 </BaseLayout>
