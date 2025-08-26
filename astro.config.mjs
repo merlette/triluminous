@@ -9,6 +9,8 @@ import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
+	output: 'static',
+	base: '/triluminous/',
 	vite: {
 		server: {
 			watch: {
@@ -16,7 +18,7 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://mintaka.co",
+	site: "https://merlette.github.io/triluminous/",
 	i18n: {
 		defaultLocale: "cn",
 		locales: ["cn", "en"],

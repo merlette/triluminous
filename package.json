@@ -1,15 +1,15 @@
 {
-	"name": "@majesticooss/mintaka",
+	"name": "@merlette/triluminous",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"description": "majestico.co website",
+	"description": "Triluminous Academy Website",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/majesticooss/mintaka.git"
+		"url": "https://github.com/merlette/triluminous.git"
 	},
-	"bugs": "https://github.com/majesticooss/mintaka/issues",
-	"homepage": "https://mintaka.co",
+	"bugs": "https://github.com/merlette/triluminous/issues",
+	"homepage": "https://merlette.github.io/triluminous/",
 	"files": [
 		"*"
 	],
@@ -19,7 +19,9 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"pwa:generate-assets": "pwa-assets-generator --preset minimal public/logo.svg"
+		"pwa:generate-assets": "pwa-assets-generator --preset minimal public/logo.svg",
+		"deploy:test": "npm ci && npm run build",
+		"deploy:local": "scripts/deploy.bat"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "4.0.8",
