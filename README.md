@@ -15,7 +15,7 @@ Cloudflare Pages: [https://triluminous.pages.dev](https://triluminous.pages.dev/
 - **Framework**: [Astro](https://astro.build/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [GSAP](https://gsap.com/)
-- **Deployment**: Cloudflare Pages/GitHub Pages
+- **Deployment**: Cloudflare Pages
 
 ## 📄 License
 

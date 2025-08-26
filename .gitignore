@@ -1,5 +1,5 @@
 # build output
-# dist/ - 注释掉，因为GitHub Actions需要访问此目录
+dist/
 
 # dependencies
 node_modules/
