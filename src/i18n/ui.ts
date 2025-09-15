@@ -3,7 +3,7 @@ export const languages = {
   en: "English",
 };
 
-export const defaultLang = "cn";
+export const defaultLang = "en";
 
 export const ui = {
   cn: {
